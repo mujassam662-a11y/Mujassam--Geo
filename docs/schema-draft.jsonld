@@ -1,0 +1,16 @@
+{
+  "_status": "DRAFT, NOT FOR DEPLOYMENT. Built only from facts observed on mujassam.net on 2026-10-12. Requires owner approval of brand.name_en, contact.email, contact.whatsapp, social.profiles and a raw-HTML check that no schema exists yet. LocalBusiness is intentionally omitted until the pickup address and opening hours are confirmed (contact.hours has a conflict).",
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "Organization", "@id": "https://mujassam.net/#org", "name": "مجسّم", "alternateName": "Mujassam",
+     "url": "https://mujassam.net", "email": "mujassam662@gmail.com", "telephone": "+201067227832",
+     "areaServed": {"@type": "Country", "name": "Egypt"},
+     "sameAs": ["https://www.facebook.com/profile.php?id=61592839392068", "https://www.instagram.com/mujassamnet",
+                "https://www.tiktok.com/@mujassam.net/", "https://x.com/mujassamnet"]},
+    {"@type": "WebSite", "@id": "https://mujassam.net/#website", "url": "https://mujassam.net", "name": "مجسّم",
+     "inLanguage": "ar-EG", "publisher": {"@id": "https://mujassam.net/#org"}},
+    {"@type": "Service", "@id": "https://mujassam.net/#service", "serviceType": "3D printing service",
+     "name": "طباعة ثلاثية الأبعاد بسعر فوري", "provider": {"@id": "https://mujassam.net/#org"},
+     "areaServed": {"@type": "Country", "name": "Egypt"}, "url": "https://mujassam.net/pricing"}
+  ]
+}

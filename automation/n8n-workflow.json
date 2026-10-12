@@ -1,0 +1,222 @@
+{
+  "name": "Mujassam GEO schedule",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Daily 06:15",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "15 6 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "2",
+      "name": "Weekly Sun 07:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        200
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * 0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3",
+      "name": "Monthly 1st 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        400
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 1 * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "4",
+      "name": "Run daily",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "command": "cd /opt/mujassam-geo && python3 -m geo run daily"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Run weekly",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        260,
+        200
+      ],
+      "parameters": {
+        "command": "cd /opt/mujassam-geo && python3 -m geo run weekly"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Run monthly",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        260,
+        400
+      ],
+      "parameters": {
+        "command": "cd /opt/mujassam-geo && python3 -m geo run monthly"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Any task failed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        520,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.stdout}}",
+              "operation": "contains",
+              "value2": "\"status\": \"failed\""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "8",
+      "name": "Log failure (no external send)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        760,
+        200
+      ],
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Daily 06:15": {
+      "main": [
+        [
+          {
+            "node": "Run daily",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weekly Sun 07:00": {
+      "main": [
+        [
+          {
+            "node": "Run weekly",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monthly 1st 08:00": {
+      "main": [
+        [
+          {
+            "node": "Run monthly",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run daily": {
+      "main": [
+        [
+          {
+            "node": "Any task failed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run weekly": {
+      "main": [
+        [
+          {
+            "node": "Any task failed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run monthly": {
+      "main": [
+        [
+          {
+            "node": "Any task failed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Any task failed?": {
+      "main": [
+        [
+          {
+            "node": "Log failure (no external send)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "Africa/Cairo"
+  },
+  "meta": {
+    "note": "Requires self-hosted n8n with Execute Command enabled. Notification nodes are intentionally absent: add one only after the owner approves the channel and identity."
+  }
+}

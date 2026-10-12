@@ -1,0 +1,2 @@
+id,use_case,material,technology,model_traits,sliced_weight_g,print_time_min,issues,improvements,result,evidence_refs,publication_permission,confidentiality
+JOB-EXAMPLE-DELETE-ME,graduation_project_bracket,PETG,FDM,"thin walls 1.2mm; overhang 50deg",42,150,"stringing","raised retraction 0.5mm","passed fit test (owner observation)","photo_ref:none",none,"customer design - do not publish"

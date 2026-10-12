@@ -1,0 +1,9 @@
+# Mujassam GEO schedule (server time = Africa/Cairo). Install with: crontab automation/crontab.example (edit PATH first)
+CRON_TZ=Africa/Cairo
+GEO=/opt/mujassam-geo
+# Daily 06:15: validate integrations, incremental GA4/GSC/Clarity/Bing, scoped crawl (30 pages), backlog, daily report
+15 6 * * *   cd $GEO && /usr/bin/python3 -m geo run daily   >> var/cron.log 2>&1
+# Weekly Sunday 07:00: + AI-visibility API proxies, full report (manual samples are imported separately)
+0 7 * * 0    cd $GEO && /usr/bin/python3 -m geo run weekly  >> var/cron.log 2>&1
+# Monthly 1st 08:00: period comparison, experiments, margin
+0 8 1 * *    cd $GEO && /usr/bin/python3 -m geo run monthly >> var/cron.log 2>&1

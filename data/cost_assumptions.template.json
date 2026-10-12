@@ -1,0 +1,8 @@
+{"_note": "Fill ONLY with verified internal numbers. Missing values => margin analysis reports 'insufficient data' instead of guessing.",
+ "assumptions": [
+   {"key": "material_cost_pla_egp_per_g", "value": null, "unit": "EGP/g", "source": "", "verified": false},
+   {"key": "material_cost_petg_egp_per_g", "value": null, "unit": "EGP/g", "source": "", "verified": false},
+   {"key": "machine_cost_egp_per_hour", "value": null, "unit": "EGP/h", "source": "", "verified": false},
+   {"key": "labor_cost_egp_per_order", "value": null, "unit": "EGP/order", "source": "", "verified": false},
+   {"key": "payment_fee_pct", "value": null, "unit": "%", "source": "", "verified": false}
+ ]}

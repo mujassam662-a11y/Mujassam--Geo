@@ -1,0 +1,29 @@
+{
+  "_note": "Proposed experiments. None start until the owner approves the change (it touches the live site). Baselines must be captured first.",
+  "experiments": [
+    {"id": "exp-price-breakdown", "problem": "Visitors may not understand how the instant price is built (weight x rate + machine time), and the 'today only' discount label may reduce trust.",
+     "hypothesis": "A visible worked example under the quote (grams x rate, minutes x rate, discount, shipping) increases quote-to-checkout rate.",
+     "target": "Quote/preview page after upload", "change": "Add an itemised price breakdown using real quote values; remove false urgency wording if the discount is ongoing.",
+     "benefit": "More checkouts per quote", "effort": 2, "risk": 2, "baseline": "Quote->checkout rate over 28 days (needs GA4 events confirmed)",
+     "primary_kpi": "quote_to_checkout_rate", "secondary_kpi": "WhatsApp pricing questions per week (manual count)", "evaluation_period_days": 28,
+     "success_criteria": ">=10% relative lift with >=100 quotes in each period", "rollback": "Revert the component (feature flag or previous build)", "status": "proposed"},
+    {"id": "exp-material-guide", "problem": "Material guidance is a short homepage section; PLA/PETG/ABS availability conflicts.",
+     "hypothesis": "A single, accurate material guide page (owner-verified) improves AI answers for material prompts and reduces wrong-material orders.",
+     "target": "New /materials page (proposed)", "change": "Publish verified comparison: uses, limits, price per gram, colours, availability.",
+     "benefit": "Better-qualified orders, citations for material prompts", "effort": 3, "risk": 1, "baseline": "AI visibility for intent=materials prompts; GSC impressions for material queries",
+     "primary_kpi": "official_citation_rate (materials prompts)", "secondary_kpi": "GSC clicks to /materials", "evaluation_period_days": 56,
+     "success_criteria": "Citation in >=2 platforms where baseline had none; reported as directional (small sample)", "rollback": "Unpublish page / noindex", "status": "proposed"},
+    {"id": "exp-faq-consistency", "problem": "FAQ conflicts with pricing, refund policy and privacy on materials, cancellation and payment.",
+     "hypothesis": "Resolving conflicts raises accuracy of AI answers about Mujassam.",
+     "target": "Home FAQ, /pricing, /refund-policy, /privacy", "change": "Apply owner-confirmed facts across all pages.",
+     "benefit": "Accurate AI descriptions; fewer support questions", "effort": 1, "risk": 2, "baseline": "Brand accuracy on brand prompts (eg-mujassam-what, en-mujassam-what)",
+     "primary_kpi": "brand accuracy rate", "secondary_kpi": "fact conflicts open", "evaluation_period_days": 42,
+     "success_criteria": "0 open conflicts; accuracy reviewed on all brand prompts", "rollback": "Restore previous text", "status": "proposed"},
+    {"id": "exp-case-studies", "problem": "No evidence-backed case studies (graduation projects, prototypes).",
+     "hypothesis": "Two real, permissioned case studies with actual weight/time/material earn citations for use-case prompts.",
+     "target": "New /projects pages (proposed)", "change": "Publish anonymised case studies from the knowledge base (publication_permission required).",
+     "benefit": "Trust + citations for eg-grad-project, eg-prototype", "effort": 3, "risk": 1, "baseline": "Visibility on use_case/prototype prompts",
+     "primary_kpi": "brand_mention_rate (use_case, prototype)", "secondary_kpi": "uploads from case-study landing pages", "evaluation_period_days": 56,
+     "success_criteria": "Directional improvement on repeated samples; inconclusive if <10 observations", "rollback": "Unpublish", "status": "proposed"}
+  ]
+}

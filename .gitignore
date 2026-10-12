@@ -1,0 +1,9 @@
+.env
+*.env.local
+var/
+__pycache__/
+*.pyc
+.pytest_cache/
+secrets/
+*.json.key
+service-account*.json

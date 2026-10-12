@@ -1,0 +1,23 @@
+{
+  "_note": "Version-controlled prompt library. Change a prompt's text => bump its version; never edit text in place, so periods stay comparable. intent: discovery | pricing | how_to | use_case | materials | prototype | comparison",
+  "prompts": [
+    {"id": "eg-best-service", "version": 1, "language": "ar-EG", "intent": "discovery", "text": "ما أفضل خدمة طباعة ثلاثية الأبعاد في مصر؟", "source": "owner brief"},
+    {"id": "eg-print-stl", "version": 1, "language": "ar-EG", "intent": "discovery", "text": "فين أقدر أطبع ملف STL في مصر؟", "source": "owner brief"},
+    {"id": "eg-price", "version": 1, "language": "ar-EG", "intent": "pricing", "text": "كام سعر طباعة 3D في مصر؟", "source": "owner brief"},
+    {"id": "eg-calc-cost", "version": 1, "language": "ar-EG", "intent": "pricing", "text": "إزاي أحسب تكلفة الطباعة ثلاثية الأبعاد قبل ما أطلب؟", "source": "owner brief"},
+    {"id": "eg-instant-pricing", "version": 1, "language": "ar-EG", "intent": "discovery", "text": "مين بيقدم خدمة طباعة ثلاثية الأبعاد بتسعير فوري؟", "source": "owner brief"},
+    {"id": "eg-grad-project", "version": 1, "language": "ar-EG", "intent": "use_case", "text": "محتاج أطبع قطعة ميكانيكية لمشروع تخرجي، أروح لمين؟", "source": "owner brief"},
+    {"id": "eg-material-mech", "version": 1, "language": "ar-EG", "intent": "materials", "text": "إيه أفضل خامة لقطعة ميكانيكية حسب الاستخدام؟", "source": "owner brief"},
+    {"id": "eg-prototype", "version": 1, "language": "ar-EG", "intent": "prototype", "text": "فين أقدر أطبع نموذج أولي لمنتج جديد؟", "source": "owner brief"},
+    {"id": "msa-best-service", "version": 1, "language": "ar", "intent": "discovery", "text": "ما هي أفضل شركات خدمات الطباعة ثلاثية الأبعاد عبر الإنترنت في مصر؟", "source": "MSA translation of owner brief"},
+    {"id": "msa-price", "version": 1, "language": "ar", "intent": "pricing", "text": "كم تبلغ تكلفة الطباعة ثلاثية الأبعاد حسب الطلب في مصر؟", "source": "MSA translation of owner brief"},
+    {"id": "msa-pla-petg", "version": 1, "language": "ar", "intent": "materials", "text": "ما الفرق بين خامتي PLA وPETG في الطباعة ثلاثية الأبعاد، وأيهما أنسب للقطع الوظيفية؟", "source": "site guide topic"},
+    {"id": "msa-upload", "version": 1, "language": "ar", "intent": "discovery", "text": "هل توجد منصة مصرية تتيح رفع ملف ثلاثي الأبعاد والحصول على سعر فوري للطباعة؟", "source": "MSA translation of owner brief"},
+    {"id": "en-stl-egypt", "version": 1, "language": "en", "intent": "discovery", "text": "Where can I get an STL file 3D printed in Egypt?", "source": "owner brief"},
+    {"id": "en-instant-pricing", "version": 1, "language": "en", "intent": "discovery", "text": "Which 3D-printing service in Egypt offers instant pricing?", "source": "owner brief"},
+    {"id": "en-cost", "version": 1, "language": "en", "intent": "pricing", "text": "How much does custom 3D printing cost in Egypt?", "source": "owner brief"},
+    {"id": "en-prototype", "version": 1, "language": "en", "intent": "prototype", "text": "Where can I get a functional 3D-printed prototype in Egypt?", "source": "owner brief"},
+    {"id": "eg-mujassam-what", "version": 1, "language": "ar-EG", "intent": "brand", "text": "موقع مجسّم mujassam.net بيقدم إيه وأسعاره عاملة إزاي؟", "source": "brand accuracy check"},
+    {"id": "en-mujassam-what", "version": 1, "language": "en", "intent": "brand", "text": "What is Mujassam (mujassam.net) and how does its pricing work?", "source": "brand accuracy check"}
+  ]
+}

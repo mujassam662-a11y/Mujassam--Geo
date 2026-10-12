@@ -1,0 +1,16 @@
+{
+  "_note": "Only entries with evidence. status: verified_active | candidate_unverified | inactive. Re-verify every 90 days. Never add revenue, customer counts or private metrics.",
+  "competitors": [
+    {"id": "tashkeel", "name": "Tashkeel / تشكيل", "names": ["tashkeel", "تشكيل"], "domains": ["tashkeel.pro"], "status": "verified_active",
+     "verified_at": "2026-10-12",
+     "data": {"model": "Marketplace: assigns jobs to vetted partner printer owners", "file_formats": "STL, OBJ, 3MF", "quote": "File-based estimate, stated as not final",
+              "price_list_public": false, "materials_named": false, "language": "Arabic + English", "contact": "support@tashkeel.pro", "address_public": false},
+     "sources": ["https://tashkeel.pro/ (fetched 2026-10-12)"]},
+    {"id": "printfy3d", "name": "Printfy3D", "names": ["printfy3d", "printfy 3d"], "domains": ["printfy3d.myeasyorders.com", "printfy3d.easy-orders.net"], "status": "candidate_unverified",
+     "verified_at": null, "data": {"note": "Appeared in web search for Egypt print-on-demand; page redirected and was not reviewed yet"},
+     "sources": ["https://printfy3d.easy-orders.net/pages/print-on-demand (search result 2026-10-12)"]},
+    {"id": "khamsat_freelancers", "name": "Khamsat 3D freelancers", "names": ["خمسات", "khamsat"], "domains": ["khamsat.com"], "status": "verified_active",
+     "verified_at": "2026-10-12", "data": {"model": "Freelance marketplace; mostly 3D design/STL preparation gigs, an alternative for design-plus-print buyers"},
+     "sources": ["https://khamsat.com/designing/3d-printing (search results 2026-10-12)"]}
+  ]
+}

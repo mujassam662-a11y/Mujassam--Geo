@@ -1,0 +1,14 @@
+{
+  "_note": "availability: available_now | temporarily_unavailable | planned | unverified. Seeded from public site 2026-10-12. Owner/inventory confirmation required before any claim is advertised.",
+  "materials": [
+    {"id": "PLA", "name": "PLA", "availability": "available_now", "source": "https://mujassam.net/pricing ; home FAQ", "verified_at": "2026-10-12",
+     "data": {"list_price_egp_per_g": 6.0, "colours": ["أبيض","أسود","رمادي","أحمر","أزرق","أخضر","أصفر","برتقالي","بني","بنفسجي","بينك","بيبي بينك","ذهبي (6.50)"],
+              "site_positioning": "decor, gifts, prototypes; not for direct sun", "upload_form_colours": ["white"]},
+     "notes": "Pricing page lists 12+ colours; upload form observed showing white only. Verify."},
+    {"id": "PETG", "name": "PETG", "availability": "available_now", "source": "https://mujassam.net/pricing ; home FAQ", "verified_at": "2026-10-12",
+     "data": {"list_price_egp_per_g": 8.0, "colours": ["أبيض","أسود"], "site_positioning": "mechanical parts, outdoor, water/heat resistance"}},
+    {"id": "ABS", "name": "ABS", "availability": "unverified", "source": "https://mujassam.net/pricing (listed) vs home FAQ (not listed)", "verified_at": null,
+     "data": {"list_price_egp_per_g": 10.0, "colours": ["أبيض","أسود"], "site_positioning": "high-temperature uses"},
+     "notes": "Conflict: listed on pricing page and upload form, absent from FAQ 'available materials'. Owner must confirm."}
+  ]
+}

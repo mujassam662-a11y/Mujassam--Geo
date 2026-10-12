@@ -1,0 +1,6 @@
+# Runtime is Python 3.11+ standard library only.
+# Optional, for Google service-account auth:
+google-auth>=2.30
+requests>=2.31
+# Tests (unittest works without it):
+pytest>=8
