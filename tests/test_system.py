@@ -106,15 +106,19 @@ class TestFactsBacklogSafety(unittest.TestCase):
 
     def test_conflicts_and_approval(self):
         open_ = self.conn.execute("SELECT COUNT(*) c FROM fact_conflicts WHERE status='open'").fetchone()["c"]
-        self.assertGreaterEqual(open_, 6)
-        self.assertEqual(registry.facts_for_publication(self.conn), [], "nothing is publishable before owner approval")
-        registry.approve_fact(self.conn, "materials.offered", "owner", "PLA, PETG")
-        self.assertEqual(self.conn.execute("SELECT status FROM fact_conflicts WHERE topic='materials.offered'").fetchone()["status"], "resolved")
-        self.assertEqual(self.conn.execute("SELECT new_value FROM fact_history WHERE fact_id='materials.offered'").fetchone()["new_value"], "PLA, PETG")
+        seed = json.loads((ROOT / "data" / "facts.seed.json").read_text(encoding="utf-8"))["facts"]
+        self.assertEqual(open_, sum(1 for f in seed if f["status"] == "conflicting"))
+        approved_in_seed = [f["id"] for f in seed if f["status"] == "owner_verified"]
+        self.assertTrue(approved_in_seed)
+        self.assertEqual(registry.facts_for_publication(self.conn), [], "seed status alone never grants public approval")
+        registry.approve_fact(self.conn, "contact.hours", "owner", "Sat-Thu 10:00-18:00; Friday closed")
+        self.assertEqual(self.conn.execute("SELECT status FROM fact_conflicts WHERE topic='contact.hours'").fetchone()["status"], "resolved")
+        self.assertEqual(self.conn.execute("SELECT new_value FROM fact_history WHERE fact_id='contact.hours'").fetchone()["new_value"],
+                         "Sat-Thu 10:00-18:00; Friday closed")
 
     def test_draft_check_flags_unverified_claims(self):
-        issues = registry.check_text_against_facts(self.conn, "نطبع بخامة ABS وبنشتغل مع AUC")
-        self.assertEqual({i["fact"] for i in issues}, {"materials.offered", "trust.worked_with"})
+        issues = registry.check_text_against_facts(self.conn, "خصم 50% انهارده بس وبنشتغل مع AUC")
+        self.assertEqual({i["fact"] for i in issues}, {"pricing.discount", "trust.worked_with"})
 
     def test_backlog_state_machine_requires_human_and_approval(self):
         a = json.loads((ROOT / "data" / "initial_audit.json").read_text(encoding="utf-8"))

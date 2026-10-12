@@ -49,6 +49,7 @@ def sync_facts(conn, seed: dict | None = None) -> dict:
             changes.append({"fact": f["id"], "affected_urls": urls})
         if f["status"] == "conflicting":
             key = db.stable_hash(["fact", f["id"], f["value"]])
+            conn.execute("UPDATE fact_conflicts SET status='superseded' WHERE topic=? AND status='open' AND dedup_key!=?", (f["id"], key))
             conn.execute("INSERT OR IGNORE INTO fact_conflicts(dedup_key,topic,statements,status,detected_at) VALUES(?,?,?,?,?)",
                          (key, f["id"], json.dumps({"value": f["value"], "sources": f["source"]}, ensure_ascii=False), "open", db.now_iso()))
     conn.commit()
